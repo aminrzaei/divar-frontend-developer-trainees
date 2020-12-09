@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .App-intro {
   background-color: #fff;
   min-height: 100vh;
@@ -14,7 +10,8 @@
 }
 
 .widget-row {
-  width: 80%;
+  margin: 10px 0;
+  width: 500px;
   display: flex;
   position: relative;
   justify-content: right;
@@ -48,4 +45,96 @@
 .widget-row__title {
   font-size: 18px;
   color: rgb(31, 31, 31);
+}
+
+.action-widget-row {
+  cursor: pointer;
+  margin: 10px 0;
+  width: 500px;
+  display: flex;
+  position: relative;
+  justify-content: right;
+  align-items: center;
+}
+.action-widget-row::before {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: rgb(211, 211, 211);
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+}
+.action-widget-row::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: rgb(211, 211, 211);
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+}
+
+.action-widget-row__icon {
+  height: 50px;
+  margin: 5px 0 0 8px;
+}
+.action-widget-row__title {
+  font-size: 18px;
+  color: rgb(31, 31, 31);
+}
+.action-widget-row__percentage {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 25px;
+}
+.action-widget-row__bar {
+  background-color: rgb(201, 201, 201);
+  direction: ltr;
+  border-radius: 50px;
+  position: relative;
+  height: 20px;
+  display: flex;
+  width: 130px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+.action-widget-row__bar-level {
+  position: absolute;
+  height: 100%;
+  background-color: rgb(2, 122, 12);
+  top: 0;
+}
+.action-widget-row__block {
+  height: 100%;
+  position: relative;
+  width: 25%;
+  border: 1px solid rgb(255, 255, 255);
+}
+.description-row {
+  width: 500px;
+  position: relative;
+  padding: 5px 5px 15px 5px;
+}
+.description-row ::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: rgb(211, 211, 211);
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+}
+.description-row__title {
+  color: #000;
+  font-size: 24px;
+  margin: 0 0 15px 0;
+}
+.description-row__text {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
 }
