@@ -18,12 +18,12 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-intro">
+    <div className="app">
+      <div className="app-intro">
         {/* {actionWidget()} */}
         {/* {nonActionWidget()} */}
         {renderWidgets(widgets)}
-      </header>
+      </div>
     </div>
   );
 }
