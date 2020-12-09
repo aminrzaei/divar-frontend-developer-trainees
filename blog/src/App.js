@@ -17,13 +17,22 @@ function App() {
     })();
   }, []);
 
+  if (widgets?.length) {
+    return (
+      <div className="app">
+        <div className="app-intro">
+          {/* {actionWidget()} */}
+          {/* {nonActionWidget()} */}
+          {renderWidgets(widgets)}
+        </div>
+      </div>
+    );
+  } else {
+    console.log('AMin');
+  }
   return (
     <div className="app">
-      <div className="app-intro">
-        {/* {actionWidget()} */}
-        {/* {nonActionWidget()} */}
-        {renderWidgets(widgets)}
-      </div>
+      <div className="loading">در حال بار گذاری ...</div>
     </div>
   );
 }

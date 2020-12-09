@@ -1,13 +1,17 @@
 import { percentageBar } from './percentageBar';
 
-export const renderWidgets = (widgets) => {
+export const renderWidgets = (widgets, idx) => {
   return widgets.map((widget) => {
     switch (widget.widget_type) {
       case 'TITLE_ROW':
-        return <div className="title-row">{widget.data.text}</div>;
+        return (
+          <div className="title-row" key={idx}>
+            {widget.data.text}
+          </div>
+        );
       case 'UNEXPANDABLE_ROW':
         return (
-          <div className="unexpandable-row">
+          <div className="unexpandable-row" key={idx}>
             <span className="unexpandable-row__title">
               {' '}
               {widget.data.title}
@@ -16,10 +20,10 @@ export const renderWidgets = (widgets) => {
           </div>
         );
       case 'SECTION_DIVIDER_ROW':
-        return <div className="section-divider-row"></div>;
+        return <div className="section-divider-row" key={idx}></div>;
       case 'SCORE_ROW':
         return (
-          <div className="action-widget-row">
+          <div className="action-widget-row" key={idx}>
             <img
               src={widget.data.icon.image_url_light}
               className="action-widget-row__icon"
