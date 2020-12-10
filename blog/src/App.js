@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 import { WidgetService } from './widget-service';
 import { renderWidgets } from './components/renderWidgets';
-import './App.css';
+import './App.scss';
 
 function App() {
   const [widgets, setWidgets] = useState([]);

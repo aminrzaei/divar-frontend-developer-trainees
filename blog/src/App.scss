@@ -1,0 +1,69 @@
+@import './sass/utils/variables';
+
+@import './sass/components/loading';
+@import './sass//components/widget-row';
+@import './sass/components/action-widget-row';
+
+.app {
+  position: relative;
+}
+
+.app-intro {
+  color: $black-scale-9;
+  background-color: $white-scale-9;
+  min-height: 100vh;
+  width: 550px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.description-row {
+  width: 100%;
+  position: relative;
+  padding: 5px 5px 15px 5px;
+  &::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: $gray-scale-4;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 0;
+  }
+  &__title {
+    font-size: 24px;
+    margin: 0 0 15px 0;
+  }
+  &__text {
+    color: $gray-scale-6;
+    font-size: 17px;
+  }
+}
+.title-row {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.unexpandable-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  &__title {
+    color: $gray-scale-6;
+  }
+  &__value {
+    color: $black-scale-9;
+  }
+}
+.section-divider-row {
+  width: 100%;
+  height: 1px;
+  background-color: $gray-scale-4;
+  margin-top: 5px;
+}
