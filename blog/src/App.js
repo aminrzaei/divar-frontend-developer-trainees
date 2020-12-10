@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+
+// import { actionWidget } from './components/actionWidget';
+// import { nonActionWidget } from './components/nonActionWidget';
+
+import { WidgetService } from './widget-service';
+import { renderWidgets } from './components/renderWidgets';
 import './App.css';
 
 function App() {
+  const [widgets, setWidgets] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const widgetServiceResult = await WidgetService();
+      setWidgets(widgetServiceResult);
+    })();
+  }, []);
+
+  if (widgets?.length) {
+    return (
+      <div className="app">
+        <div className="app-intro">
+          {/* {actionWidget()} */}
+          {/* {nonActionWidget()} */}
+          {renderWidgets(widgets)}
+        </div>
+      </div>
+    );
+  } else {
+    console.log('AMin');
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="loading">در حال بار گذاری ...</div>
     </div>
   );
 }
