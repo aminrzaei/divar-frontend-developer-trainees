@@ -1,9 +1,9 @@
 import React from 'react';
-import Modal from './Modal';
+import NestedModal from './NestedModal';
 import { percentageBar } from './percentageBar';
 
-const RenderWidgets = (props) => {
-  return props.widgets.map((widget, idx) => {
+const Modal = (props) => {
+  return props.content.map((widget, idx) => {
     switch (widget.widget_type) {
       case 'TITLE_ROW':
         return (
@@ -11,30 +11,19 @@ const RenderWidgets = (props) => {
             {widget.data.text}
           </div>
         );
-      case 'UNEXPANDABLE_ROW':
-        return (
-          <div className="unexpandable-row" key={idx}>
-            <span className="unexpandable-row__title">
-              {' '}
-              {widget.data.title}
-            </span>
-            <span className="unexpandable-row__value">{widget.data.value}</span>
-          </div>
-        );
-      case 'SECTION_DIVIDER_ROW':
-        return <div className="section-divider-row" key={idx}></div>;
       case 'SCORE_ROW':
         return (
           <div
             className="action-widget-row"
             key={idx}
             onClick={() => {
-              props.setModal(
-                <Modal
-                  content={widget.data.action.payload.widget_list}
-                  setNestedModal={props.setNestedModal}
-                />
-              );
+              if (widget.data.action) {
+                props.setNestedModal(
+                  <NestedModal
+                    content={widget.data.action.payload.widget_list}
+                  />
+                );
+              }
             }}
           >
             <img
@@ -50,10 +39,15 @@ const RenderWidgets = (props) => {
             <div className="action-widget-row__arrow">{`>`}</div>
           </div>
         );
+      case 'IMAGE_CAROUSEL_ROW':
+        return <div>IMAGE_CAROUSEL_ROW</div>;
+      case 'FEATURE_ROW':
+        return <div>FEATURE_ROW</div>;
+      case 'LEGEND_TITLE_ROW':
+        return <div>LEGEND_TITLE_ROW</div>;
       default:
         return null;
     }
   });
 };
-
-export default RenderWidgets;
+export default Modal;
