@@ -6,6 +6,11 @@
   position: relative;
   justify-content: right;
   align-items: center;
+  transition: $transition-all;
+  border-radius: 5px;
+  &:hover {
+    background-color: #eee;
+  }
   &::after {
     content: '';
     width: 100%;
@@ -24,8 +29,10 @@
   &__title {
     font-size: 16px;
     min-width: 170px;
+    margin: 0;
     padding-bottom: 5px;
     color: $black-scale-8;
+    display: inline-block;
   }
   &__percentage {
     display: flex;

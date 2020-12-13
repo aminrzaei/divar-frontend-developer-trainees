@@ -10,8 +10,8 @@ import './App.scss';
 
 function App() {
   const [widgets, setWidgets] = useState([]);
-  const [modal, setModal] = useState();
-  const [nestedModal, setNestedModal] = useState();
+  const [modal, setModal] = useState(null);
+  const [nestedModal, setNestedModal] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -23,7 +23,13 @@ function App() {
 
   if (widgets?.length) {
     return (
-      <div className="app">
+      <section
+        className="app"
+        onClick={() => {
+          setNestedModal(null);
+          setModal(null);
+        }}
+      >
         <div className="app-intro">
           {/* {actionWidget()} */}
           {/* {nonActionWidget()} */}
@@ -33,9 +39,33 @@ function App() {
             setNestedModal={setNestedModal}
           />
         </div>
-        {modal}
-        {nestedModal}
-      </div>
+        {modal ? (
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="modal__close"
+              onClick={() => {
+                setModal(null);
+              }}
+            >
+              بستن
+            </div>
+            {modal}
+          </div>
+        ) : null}
+        {nestedModal ? (
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="modal__back-button"
+              onClick={() => {
+                setNestedModal(null);
+              }}
+            >
+              بازگشت
+            </div>
+            {nestedModal}
+          </div>
+        ) : null}
+      </section>
     );
   }
   return (

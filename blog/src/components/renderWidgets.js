@@ -14,10 +14,7 @@ const RenderWidgets = (props) => {
       case 'UNEXPANDABLE_ROW':
         return (
           <div className="unexpandable-row" key={idx}>
-            <span className="unexpandable-row__title">
-              {' '}
-              {widget.data.title}
-            </span>
+            <span className="unexpandable-row__title">{widget.data.title}</span>
             <span className="unexpandable-row__value">{widget.data.value}</span>
           </div>
         );
@@ -28,7 +25,8 @@ const RenderWidgets = (props) => {
           <div
             className="action-widget-row"
             key={idx}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               props.setModal(
                 <Modal
                   content={widget.data.action.payload.widget_list}
@@ -42,10 +40,10 @@ const RenderWidgets = (props) => {
               className="action-widget-row__icon"
               alt={widget.data.icon.icon_name}
             />
-            <div
+            <p
               className="action-widget-row__title"
               dangerouslySetInnerHTML={{ __html: `${widget.data.title}` }}
-            ></div>
+            ></p>
             {percentageBar(widget.data.percentage_score)}
             <div className="action-widget-row__arrow">{`>`}</div>
           </div>

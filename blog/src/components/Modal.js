@@ -12,39 +12,70 @@ const Modal = (props) => {
           </div>
         );
       case 'SCORE_ROW':
-        return (
-          <div
-            className="action-widget-row"
-            key={idx}
-            onClick={() => {
-              if (widget.data.action) {
+        if (widget.data.action) {
+          return (
+            <div
+              className="action-widget-row"
+              key={idx}
+              onClick={(e) => {
+                e.stopPropagation();
                 props.setNestedModal(
                   <NestedModal
                     content={widget.data.action.payload.widget_list}
                   />
                 );
-              }
-            }}
-          >
-            <img
-              src={widget.data.icon.image_url_light}
-              className="action-widget-row__icon"
-              alt={widget.data.icon.icon_name}
-            />
-            <div
+              }}
+            >
+              <img
+                src={widget.data.icon.image_url_light}
+                className="action-widget-row__icon"
+                alt={widget.data.icon.icon_name}
+              />
+              <p
+                className="action-widget-row__title"
+                dangerouslySetInnerHTML={{ __html: `${widget.data.title}` }}
+              ></p>
+              {percentageBar(widget.data.percentage_score)}
+              <div className="action-widget-row__arrow">{`>`}</div>
+            </div>
+          );
+        }
+        return (
+          <div className="action-widget-row" key={idx}>
+            <p
               className="action-widget-row__title"
               dangerouslySetInnerHTML={{ __html: `${widget.data.title}` }}
-            ></div>
-            {percentageBar(widget.data.percentage_score)}
-            <div className="action-widget-row__arrow">{`>`}</div>
+            ></p>
+            <div>{widget.data.descriptive_score}</div>
           </div>
         );
+
       case 'IMAGE_CAROUSEL_ROW':
-        return <div>IMAGE_CAROUSEL_ROW</div>;
+        return (
+          <img
+            key={idx}
+            src={widget.data.items[0].image_url}
+            alt=""
+            className="modal__img"
+          />
+        );
       case 'FEATURE_ROW':
-        return <div>FEATURE_ROW</div>;
+        return (
+          <div key={idx} className="action-widget-feature">
+            <img
+              className="action-widget-feature__icon"
+              src={widget.data.icon.image_url_light}
+              alt=""
+            />
+            <p className="action-widget-feature__title">{widget.data.title}</p>
+          </div>
+        );
       case 'LEGEND_TITLE_ROW':
-        return <div>LEGEND_TITLE_ROW</div>;
+        return (
+          <div key={idx} className="action-widget-legend">
+            {widget.data.title}
+          </div>
+        );
       default:
         return null;
     }
