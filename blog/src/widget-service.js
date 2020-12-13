@@ -6,3 +6,9 @@ export const WidgetService = async () => {
   const result = await data.json();
   return result;
 };
+
+export const ActionWidgetService = async () => {
+  const data = await fetch(`${API_URL}/actions`);
+  const result = await data.json();
+  return result;
+};
