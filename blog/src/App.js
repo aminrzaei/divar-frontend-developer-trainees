@@ -1,8 +1,7 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 
-// import ActionWidget from './components/actionWidget';
-// import NonActionWidget from './components/nonActionWidget';
+// import ActionWidget from './components/ActionWidget';
+// import NonActionWidget from './components/NonActionWidget';
 
 // eslint-disable-next-line no-unused-vars
 import { WidgetService, ActionWidgetService } from './widget-service';
@@ -33,8 +32,8 @@ function App() {
         }}
       >
         <div className="app-intro">
-          {/* {actionWidget()} */}
-          {/* {nonActionWidget()} */}
+          {/* <ActionWidget/> */}
+          {/* <NonActionWidget/> */}
           <RenderWidgets
             widgets={widgets}
             setModal={setModal}

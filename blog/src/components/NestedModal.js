@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 const NestedModal = (props) =>
   props.content.map((widget) => {
@@ -25,4 +26,9 @@ const NestedModal = (props) =>
         return null;
     }
   });
+
+NestedModal.propTypes = {
+  content: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
+
 export default NestedModal;

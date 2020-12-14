@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 import NestedModal from './NestedModal';
 import PercentageBar from './PercentageBar';
@@ -38,7 +39,10 @@ const Modal = (props) =>
                 className="action-widget-row__title"
                 dangerouslySetInnerHTML={{ __html: `${widget.data.title}` }}
               />
-              {PercentageBar(widget.data.percentage_score)}
+              {widget.data.percentage_score > 0 ? (
+                <PercentageBar score={widget.data.percentage_score} />
+              ) : null}
+
               <div className="action-widget-row__arrow">{`>`}</div>
             </div>
           );
@@ -83,5 +87,10 @@ const Modal = (props) =>
         return null;
     }
   });
+
+Modal.propTypes = {
+  content: PropTypes.arrayOf(PropTypes.any).isRequired,
+  setNestedModal: PropTypes.func.isRequired,
+};
 
 export default Modal;

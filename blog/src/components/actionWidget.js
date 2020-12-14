@@ -1,8 +1,9 @@
 import React from 'react';
+
 import PercentageBar from './PercentageBar';
 import { ActionWidgetJson, ActionWidgetResponseJson } from '../widgets';
 
-const actionWidget = () => (
+const ActionWidget = () => (
   <>
     <div className="action-widget-row">
       <img
@@ -14,7 +15,7 @@ const actionWidget = () => (
         className="action-widget-row__title"
         dangerouslySetInnerHTML={{ __html: `${ActionWidgetJson.data.title}` }}
       />
-      {PercentageBar(ActionWidgetJson.data.percentage_score)}
+      <PercentageBar score={ActionWidgetJson.data.percentage_score} />
     </div>
 
     <div className="description-row">
@@ -28,4 +29,4 @@ const actionWidget = () => (
   </>
 );
 
-export default actionWidget;
+export default ActionWidget;

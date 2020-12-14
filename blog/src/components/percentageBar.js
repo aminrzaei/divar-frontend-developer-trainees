@@ -1,29 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const percentageBar = (percentage) => {
-  if (percentage > 0) {
-    return (
-      <div className="action-widget-row__percentage">
-        <div className="action-widget-row__bar">
-          <div
-            className="action-widget-row__bar-level"
-            style={{
-              width: `${percentage}%`,
-              backgroundColor: percentage > 60 ? 'green' : 'orange',
-            }}
-          >
-            {' '}
-          </div>
-          <span className="action-widget-row__block"> </span>
-          <span className="action-widget-row__block"> </span>
-          <span className="action-widget-row__block"> </span>
-          <span className="action-widget-row__block"> </span>
-          <span className="action-widget-row__block"> </span>
+const PercentageBar = (props) => {
+  const { score } = props;
+  return (
+    <div className="action-widget-row__percentage">
+      <div className="action-widget-row__bar">
+        <div
+          className="action-widget-row__bar-level"
+          style={{
+            width: `${score}%`,
+            backgroundColor: score > 60 ? 'green' : 'orange',
+          }}
+        >
+          {' '}
         </div>
+        <span className="action-widget-row__block"> </span>
+        <span className="action-widget-row__block"> </span>
+        <span className="action-widget-row__block"> </span>
+        <span className="action-widget-row__block"> </span>
+        <span className="action-widget-row__block"> </span>
       </div>
-    );
-  }
-  return null;
+    </div>
+  );
 };
 
-export default percentageBar;
+PercentageBar.propTypes = {
+  score: PropTypes.number.isRequired,
+};
+
+export default PercentageBar;

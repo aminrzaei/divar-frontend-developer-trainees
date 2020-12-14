@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 import Modal from './Modal';
 import PercentageBar from './PercentageBar';
@@ -47,7 +48,10 @@ const RenderWidgets = (props) =>
               className="action-widget-row__title"
               dangerouslySetInnerHTML={{ __html: `${widget.data.title}` }}
             />
-            {PercentageBar(widget.data.percentage_score)}
+            {widget.data.percentage_score > 0 ? (
+              <PercentageBar score={widget.data.percentage_score} />
+            ) : null}
+
             <div className="action-widget-row__arrow">{`>`}</div>
           </div>
         );
@@ -55,4 +59,11 @@ const RenderWidgets = (props) =>
         return null;
     }
   });
+
+RenderWidgets.propTypes = {
+  widgets: PropTypes.arrayOf(PropTypes.any).isRequired,
+  setModal: PropTypes.func.isRequired,
+  setNestedModal: PropTypes.func.isRequired,
+};
+
 export default RenderWidgets;

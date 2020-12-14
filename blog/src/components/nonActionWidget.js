@@ -1,7 +1,7 @@
 import React from 'react';
 import { NonActionwidgetJson } from '../widgets';
 
-const nonActionWidget = () => (
+const NonActionWidget = () => (
   <div className="widget-row">
     <img
       src={NonActionwidgetJson.data.icon.image_url_light}
@@ -17,4 +17,4 @@ const nonActionWidget = () => (
   </div>
 );
 
-export default nonActionWidget;
+export default NonActionWidget;
