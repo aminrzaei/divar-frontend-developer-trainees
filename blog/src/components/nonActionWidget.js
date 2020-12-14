@@ -1,19 +1,20 @@
-import { nonActionwidgetJson } from '../jsons';
+import React from 'react';
+import { NonActionwidgetJson } from '../widgets';
 
-export const nonActionWidget = () => {
-  return (
-    <div className="widget-row">
-      <img
-        src={nonActionwidgetJson.data.icon.image_url_light}
-        className="widget-row__icon"
-        alt={nonActionwidgetJson.data.icon.icon_name}
-      />
-      <div
-        className="widget-row__title"
-        dangerouslySetInnerHTML={{
-          __html: `${nonActionwidgetJson.data.title}`,
-        }}
-      ></div>
-    </div>
-  );
-};
+const NonActionWidget = () => (
+  <div className="widget-row">
+    <img
+      src={NonActionwidgetJson.data.icon.image_url_light}
+      className="widget-row__icon"
+      alt={NonActionwidgetJson.data.icon.icon_name}
+    />
+    <div
+      className="widget-row__title"
+      dangerouslySetInnerHTML={{
+        __html: `${NonActionwidgetJson.data.title}`,
+      }}
+    />
+  </div>
+);
+
+export default NonActionWidget;

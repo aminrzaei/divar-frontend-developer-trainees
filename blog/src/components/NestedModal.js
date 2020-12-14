@@ -1,11 +1,13 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
-const NestedModal = (props) => {
-  return props.content.map((widget, idx) => {
+const NestedModal = (props) =>
+  props.content.map((widget) => {
     switch (widget.widget_type) {
       case 'FEATURE_ROW':
         return (
-          <div key={idx} className="action-widget-feature">
+          <div key={uuidv4()} className="action-widget-feature">
             <img
               className="action-widget-feature__icon"
               src={widget.data.icon.image_url_light}
@@ -16,7 +18,7 @@ const NestedModal = (props) => {
         );
       case 'LEGEND_TITLE_ROW':
         return (
-          <div key={idx} className="action-widget-legend">
+          <div key={uuidv4()} className="action-widget-legend">
             {widget.data.title}
           </div>
         );
@@ -24,6 +26,9 @@ const NestedModal = (props) => {
         return null;
     }
   });
+
+NestedModal.propTypes = {
+  content: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default NestedModal;

@@ -1,30 +1,33 @@
 import React from 'react';
-import Modal from './Modal';
-import { percentageBar } from './percentageBar';
+import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
-const RenderWidgets = (props) => {
-  return props.widgets.map((widget, idx) => {
+import Modal from './Modal';
+import PercentageBar from './PercentageBar';
+
+const RenderWidgets = (props) =>
+  props.widgets.map((widget) => {
     switch (widget.widget_type) {
       case 'TITLE_ROW':
         return (
-          <div className="title-row" key={idx}>
+          <div className="title-row" key={uuidv4()}>
             {widget.data.text}
           </div>
         );
       case 'UNEXPANDABLE_ROW':
         return (
-          <div className="unexpandable-row" key={idx}>
+          <div className="unexpandable-row" key={uuidv4()}>
             <span className="unexpandable-row__title">{widget.data.title}</span>
             <span className="unexpandable-row__value">{widget.data.value}</span>
           </div>
         );
       case 'SECTION_DIVIDER_ROW':
-        return <div className="section-divider-row" key={idx}></div>;
+        return <div className="section-divider-row" key={uuidv4()} />;
       case 'SCORE_ROW':
         return (
           <div
             className="action-widget-row"
-            key={idx}
+            key={uuidv4()}
             onClick={(e) => {
               e.stopPropagation();
               props.setModal(
@@ -34,6 +37,7 @@ const RenderWidgets = (props) => {
                 />
               );
             }}
+            aria-hidden="true"
           >
             <img
               src={widget.data.icon.image_url_light}
@@ -43,8 +47,11 @@ const RenderWidgets = (props) => {
             <p
               className="action-widget-row__title"
               dangerouslySetInnerHTML={{ __html: `${widget.data.title}` }}
-            ></p>
-            {percentageBar(widget.data.percentage_score)}
+            />
+            {widget.data.percentage_score > 0 ? (
+              <PercentageBar score={widget.data.percentage_score} />
+            ) : null}
+
             <div className="action-widget-row__arrow">{`>`}</div>
           </div>
         );
@@ -52,6 +59,11 @@ const RenderWidgets = (props) => {
         return null;
     }
   });
+
+RenderWidgets.propTypes = {
+  widgets: PropTypes.arrayOf(PropTypes.any).isRequired,
+  setModal: PropTypes.func.isRequired,
+  setNestedModal: PropTypes.func.isRequired,
 };
 
 export default RenderWidgets;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-// import { actionWidget } from './components/actionWidget';
-// import { nonActionWidget } from './components/nonActionWidget';
+// import ActionWidget from './components/ActionWidget';
+// import NonActionWidget from './components/NonActionWidget';
 
 // eslint-disable-next-line no-unused-vars
 import { WidgetService, ActionWidgetService } from './widget-service';
@@ -25,14 +25,15 @@ function App() {
     return (
       <section
         className="app"
+        aria-hidden="true"
         onClick={() => {
           setNestedModal(null);
           setModal(null);
         }}
       >
         <div className="app-intro">
-          {/* {actionWidget()} */}
-          {/* {nonActionWidget()} */}
+          {/* <ActionWidget/> */}
+          {/* <NonActionWidget/> */}
           <RenderWidgets
             widgets={widgets}
             setModal={setModal}
@@ -40,9 +41,14 @@ function App() {
           />
         </div>
         {modal ? (
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div
+            aria-hidden="true"
+            className="modal"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div
               className="modal__close"
+              aria-hidden="true"
               onClick={() => {
                 setModal(null);
               }}
@@ -53,9 +59,14 @@ function App() {
           </div>
         ) : null}
         {nestedModal ? (
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div
+            aria-hidden="true"
+            className="modal"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div
               className="modal__back-button"
+              aria-hidden="true"
               onClick={() => {
                 setNestedModal(null);
               }}
