@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 
-// import { actionWidget } from './components/actionWidget';
-// import { nonActionWidget } from './components/nonActionWidget';
+// import ActionWidget from './components/actionWidget';
+// import NonActionWidget from './components/nonActionWidget';
 
 // eslint-disable-next-line no-unused-vars
 import { WidgetService, ActionWidgetService } from './widget-service';
@@ -25,6 +26,7 @@ function App() {
     return (
       <section
         className="app"
+        aria-hidden="true"
         onClick={() => {
           setNestedModal(null);
           setModal(null);
@@ -40,9 +42,14 @@ function App() {
           />
         </div>
         {modal ? (
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div
+            aria-hidden="true"
+            className="modal"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div
               className="modal__close"
+              aria-hidden="true"
               onClick={() => {
                 setModal(null);
               }}
@@ -53,9 +60,14 @@ function App() {
           </div>
         ) : null}
         {nestedModal ? (
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div
+            aria-hidden="true"
+            className="modal"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div
               className="modal__back-button"
+              aria-hidden="true"
               onClick={() => {
                 setNestedModal(null);
               }}

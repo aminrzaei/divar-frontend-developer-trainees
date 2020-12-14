@@ -1,4 +1,6 @@
-export const percentageBar = (percentage) => {
+import React from 'react';
+
+const percentageBar = (percentage) => {
   if (percentage > 0) {
     return (
       <div className="action-widget-row__percentage">
@@ -9,15 +11,19 @@ export const percentageBar = (percentage) => {
               width: `${percentage}%`,
               backgroundColor: percentage > 60 ? 'green' : 'orange',
             }}
-          ></div>
-          <span className="action-widget-row__block"></span>
-          <span className="action-widget-row__block"></span>
-          <span className="action-widget-row__block"></span>
-          <span className="action-widget-row__block"></span>
-          <span className="action-widget-row__block"></span>
+          >
+            {' '}
+          </div>
+          <span className="action-widget-row__block"> </span>
+          <span className="action-widget-row__block"> </span>
+          <span className="action-widget-row__block"> </span>
+          <span className="action-widget-row__block"> </span>
+          <span className="action-widget-row__block"> </span>
         </div>
       </div>
     );
   }
   return null;
 };
+
+export default percentageBar;

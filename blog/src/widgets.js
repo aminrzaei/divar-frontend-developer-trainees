@@ -1,4 +1,4 @@
-export const nonActionwidgetJson = {
+export const NonActionwidgetJson = {
   widget_type: 'FEATURE_ROW',
   data: {
     title: 'بررسی فنی بیش از <b>۴۰۰</b> نقطه‌ خودرو',
@@ -16,7 +16,7 @@ export const nonActionwidgetJson = {
   },
 };
 
-export const actionWidgetJson = {
+export const ActionWidgetJson = {
   widget_type: 'SCORE_ROW',
   data: {
     title: 'بدنه',
@@ -43,7 +43,7 @@ export const actionWidgetJson = {
   },
 };
 
-export const actionWidgetResponseJson = {
+export const ActionWidgetResponseJson = {
   widget_type: 'DESCRIPTION_ROW',
   data: {
     title: 'بدنه',
